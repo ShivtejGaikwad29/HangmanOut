@@ -18,6 +18,7 @@ function startGame(){
 
 // function for displaying the updated values on the screen
 function updateDisplay(){
+    var gameover = false;
     //  first we have to update the display for the selected word
     document.getElementById("word").innerText = guessedWord.join(" ");
 
@@ -32,11 +33,13 @@ function updateDisplay(){
         document.getElementById("messagedisp").style.color = "green";
         document.getElementById("messagedisp").style.font = "bold";
         document.getElementById("messagedisp").style.fontSize = "20px";
+        gameover = true;
     }else if(chances === 0){
         document.getElementById("messagedisp").innerText = "💔 You Lose The Game The Word Was "+selectedWord;
         document.getElementById("messagedisp").style.color = "red";
         document.getElementById("messagedisp").style.font = "bold";
         document.getElementById("messagedisp").style.fontSize = "20px";
+        gameover = true;
     }else{
         document.getElementById("messagedisp").innerText = "";
     }
@@ -44,11 +47,15 @@ function updateDisplay(){
 
 // function for restarting the game
 function restartGame(){
+    gameover = false;
     startGame();  // for staring the game
     resetButtons(); // for enabling all the buttons back
 }
 
 function handleGuess(letter){
+    if(gameover){
+        return;
+    }
     // first we wanrt to check that the character which is already in wrongword then we does not select it
     if(wrongGuesses.includes(letter) || guessedWord.includes(letter)){
         document.getElementById("messagedisp").innerText = "You Already Guessed That Letter!..";
