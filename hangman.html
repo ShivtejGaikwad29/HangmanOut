@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HangMan Out Game</title>
+</head>
+<style>
+    h1 {
+    text-align: center;
+    background-color: antiquewhite;
+    height: 35px;
+    width: 100%;
+    padding: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+hr {
+    border: 3px solid black;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#container {
+    background-color: beige;
+    border: none;
+    height: auto;
+    width: auto;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#word {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#wrongcharacters{
+    margin-bottom: 10px;
+}
+
+#remainingchances{
+    margin-bottom: 10px;
+}
+
+#restart-btn{
+    margin-bottom: 10px;
+    height: 30px;
+    width: 80px;
+    margin-top: 10px;
+    background-color: brown;
+    border-radius: 8px;
+    color: bisque;
+    border: none;
+}
+
+#restart-btn:hover{
+    background-color: bisque;
+    color: brown;
+    border: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: beige;
+}
+
+#A2J, #K2T, #U2Z {
+    display: flex;                /* Use flexbox to align letters in a row */
+    justify-content: center;      /* Center the letters within the row */
+    margin-left: 20px;              /* Add spacing between rows */
+    margin-top: 10px;
+    align-items: center;
+}
+
+.letters{
+    display: flex;              
+    justify-content: center;     
+    align-items: center;         
+    height: 40px;          
+    width: 40px;          
+    border: 2px solid black;
+    margin: 5px;        
+    font-size: 16px;             
+    font-weight: bold;  
+    text-align: center; 
+    cursor: pointer;             
+    box-sizing: border-box;   
+    background-color: burlywood;
+    border-radius: 8px;
+}
+
+.letters:hover{
+    color: #2c3e50;
+    border-radius: 2px;
+}
+
+#A,#I,#O,#E,#U{
+    background-color: rgb(190, 147, 128);
+}
+
+#R,#S,#L,#T{
+    background-color: rgb(208, 163, 96);
+}
+
+#info {
+    margin: 15px auto;
+    padding: 12px;
+    background-color: blanchedalmond;
+    /* border: 2px solid rgb(158, 211, 211); */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: rgb(76, 75, 75);
+    width: 80%;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(101, 100, 100, 0.1);
+}
+
+#info strong {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#info ol {
+    margin-left: 20px;
+}
+
+#info li {
+    margin-bottom: 5px;
+}
+
+#messagedisp{
+    border: 2px solid black;
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    background-color: rgb(238, 212, 178);
+}
+
+#logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;  
+    height: auto;
+}
+</style>
+
+<body>
+    <h1>HangMan Out </h1>
+    <hr>
+    <img id="logo"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1x-VTOOZSBKbW_t4JweyhtojinEH9Os1i3UCKTWPqed4ZyhQr03pweA-byxnmK4jKGBc&usqp=CAU"
+        alt="Hangman Logo">
+    <div id="info">
+        <strong>ABOUT THE GAME</strong>
+        <ol>
+            <li>Hangman is a word-guessing game where you try to uncover a hidden word by guessing one letter at a time.
+            </li>
+            <li>You have a limited number of incorrect guesses before the game ends.</li>
+            <li>Try to find out the meaningful word</li>
+        </ol>
+
+        <strong>HOW TO PLAY:</strong>
+        <ol>
+            <li>Click on a letter to guess it.</li>
+            <li>If the letter is correct, it will appear in the word.</li>
+            <li>If the letter is incorrect, you'll lose one chance.</li>
+            <li>You can guess until you either win or run out of chances.</li>
+        </ol>
+    </div>
+    <div id="container">
+        <div id="word">_ _ _ _ _</div>
+        <div id="wrongcharacters">wrongcharacters : </div>
+        <div id="remainingchances">Remaining Chances : </div>
+        <div id="A2Zletters">
+
+            <div id="A2J">
+                <div class="letters" id="A">A</div>
+                <div class="letters" id="B">B</div>
+                <div class="letters" id="C">C</div>
+                <div class="letters" id="D">D</div>
+                <div class="letters" id="E">E</div>
+                <div class="letters" id="F">F</div>
+                <div class="letters" id="G">G</div>
+                <div class="letters" id="H">H</div>
+                <div class="letters" id="I">I</div>
+                <div class="letters" id="J">J</div>
+            </div>
+
+            <div id="K2T">
+                <div class="letters" id="K">K</div>
+                <div class="letters" id="L">L</div>
+                <div class="letters" id="M">M</div>
+                <div class="letters" id="N">N</div>
+                <div class="letters" id="O">O</div>
+                <div class="letters" id="P">P</div>
+                <div class="letters" id="Q">Q</div>
+                <div class="letters" id="R">R</div>
+                <div class="letters" id="S">S</div>
+                <div class="letters" id="T">T</div>
+            </div>
+
+            <div id="U2Z">
+                <div class="letters" id="U">U</div>
+                <div class="letters" id="V">V</div>
+                <div class="letters" id="W">W</div>
+                <div class="letters" id="X">X</div>
+                <div class="letters" id="Y">Y</div>
+                <div class="letters" id="Z">Z</div>
+            </div>
+        </div>
+
+        <div>
+            <button id="restart-btn" onclick="restartGame()">Restart</button>
+        </div>
+    </div>
+
+    <div id="messagedisp"></div>
+
+
+    <script>
+        var words = ["JAVASCRIPT", "HANGMANOUT", "APPLE", "BANANA", "CAT", "DOG", "ELEPHANT", "FISH", "GIRRAFE", "HOUSE",
+    "ICE", "KANGARO", "LION", "MONKEY", "NEST", "ORANGE", "PENGUINE", "QUARANTINE", "RAINBOW",
+    "TABLE", "UMBRELLA", "VIOLINE", "WHALE", "XYLOPHONE", "YAK", "ZEBRA"];
+
+var selectedWord = "";
+var guessedWord = [];
+var wrongGuesses = [];
+var chances = 6;
+
+// this function is help to set the values for the first time
+function startGame(){
+    selectedWord = words[Math.floor(Math.random()*words.length)];
+    guessedWord = Array(selectedWord.length).fill(" _ ");
+    wrongGuesses = [];
+    chances = 6;
+    updateDisplay();
+    resetButtons();
+}
+
+var gameover = false;
+// function for displaying the updated values on the screen
+function updateDisplay(){
+    //  first we have to update the display for the selected word
+    document.getElementById("word").innerText = guessedWord.join(" ");
+
+    //  then we have to update the wrongwords which are selected by the user
+    document.getElementById("wrongcharacters").innerText = "Wrong-Characters : " + wrongGuesses.join(", ");
+
+    //  then we have to update the remaining attempts/ chances according to the wronguesses
+    document.getElementById("remainingchances").innerText = "Remaining Attempts : " + chances;
+
+    if(guessedWord.join("") === selectedWord){
+        document.getElementById("messagedisp").innerText = "🎉 You Win The Game...";
+        document.getElementById("messagedisp").style.color = "green";
+        document.getElementById("messagedisp").style.font = "bold";
+        document.getElementById("messagedisp").style.fontSize = "20px";
+        gameover = true;
+        disableButtons();
+    }else if(chances === 0){
+        document.getElementById("messagedisp").innerText = "💔 You Lose The Game The Word Was "+selectedWord;
+        document.getElementById("messagedisp").style.color = "red";
+        document.getElementById("messagedisp").style.font = "bold";
+        document.getElementById("messagedisp").style.fontSize = "20px";
+        gameover = true;
+        disableButtons();
+    }else{
+        document.getElementById("messagedisp").innerText = "";
+        disableButtons();
+    }
+}
+
+// function for restarting the game
+function restartGame(){
+    gameover = false;
+    startGame();  // for staring the game
+    resetButtons(); // for enabling all the buttons back
+}
+
+function handleGuess(letter){
+    if(gameover){
+        return;
+    }
+    // first we wanrt to check that the character which is already in wrongword then we does not select it
+    if(wrongGuesses.includes(letter) || guessedWord.includes(letter)){
+        document.getElementById("messagedisp").innerText = "You Already Guessed That Letter!..";
+        return;
+    }
+
+    // now , we check for if that letter is present in the selected word then we have to place it in the guessed word
+    if(selectedWord.includes(letter)){
+        for(let i =0 ; i<selectedWord.length;i++){
+            if(selectedWord[i] === letter){
+                guessedWord[i] = letter;
+            }
+        }
+    }else{
+        wrongGuesses.push(letter);
+        if(chances > 0){
+            chances--;
+        }
+    }
+    updateDisplay();
+}
+
+function resetButtons(){
+    const buttons = document.querySelectorAll(".letters");
+    buttons.forEach(button => {
+        button.disabled = false;
+    });
+}
+
+function buttonsClick(){
+    const buttons = document.querySelectorAll(".letters");
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            handleGuess(button.innerText);
+            button.disabled = true;
+        });
+    });
+}
+
+function disableButtons() {
+    const buttons = document.querySelectorAll(".letters");
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+}
+
+startGame();
+buttonsClick();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+h1 {
+    text-align: center;
+    background-color: antiquewhite;
+    height: 35px;
+    width: 100%;
+    padding: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+hr {
+    border: 3px solid black;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#container {
+    background-color: beige;
+    border: none;
+    height: auto;
+    width: auto;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#word {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#wrongcharacters{
+    margin-bottom: 10px;
+}
+
+#remainingchances{
+    margin-bottom: 10px;
+}
+
+#restart-btn{
+    margin-bottom: 10px;
+    height: 30px;
+    width: 80px;
+    margin-top: 10px;
+    background-color: brown;
+    border-radius: 8px;
+    color: bisque;
+    border: none;
+}
+
+#restart-btn:hover{
+    background-color: bisque;
+    color: brown;
+    border: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: beige;
+}
+
+#A2J, #K2T, #U2Z {
+    display: flex;                /* Use flexbox to align letters in a row */
+    justify-content: center;      /* Center the letters within the row */
+    margin-left: 20px;              /* Add spacing between rows */
+    margin-top: 10px;
+    align-items: center;
+}
+
+.letters{
+    display: flex;              
+    justify-content: center;     
+    align-items: center;         
+    height: 40px;          
+    width: 40px;          
+    border: 2px solid black;
+    margin: 5px;        
+    font-size: 16px;             
+    font-weight: bold;  
+    text-align: center; 
+    cursor: pointer;             
+    box-sizing: border-box;   
+    background-color: burlywood;
+    border-radius: 8px;
+}
+
+.letters:hover{
+    color: #2c3e50;
+    border-radius: 2px;
+}
+
+#A,#I,#O,#E,#U{
+    background-color: rgb(190, 147, 128);
+}
+
+#R,#S,#L,#T{
+    background-color: rgb(208, 163, 96);
+}
+
+#info {
+    margin: 15px auto;
+    padding: 12px;
+    background-color: blanchedalmond;
+    /* border: 2px solid rgb(158, 211, 211); */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: rgb(76, 75, 75);
+    width: 80%;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(101, 100, 100, 0.1);
+}
+
+#info strong {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#info ol {
+    margin-left: 20px;
+}
+
+#info li {
+    margin-bottom: 5px;
+}
+
+#messagedisp{
+    border: 2px solid black;
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    background-color: rgb(238, 212, 178);
+}
+
+#logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;  
+    height: auto;
+}
