@@ -4,7 +4,7 @@ A simple and interactive Hangman game built using **HTML, CSS, and JavaScript**.
 
 ## 📸 Preview
 
-### ✅ Game Won /
+### ✅ Game Won 
 ![Game Start](./image/Screenshot1.png)
 
 ### ❌ Game Over
